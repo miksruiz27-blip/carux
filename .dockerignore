@@ -1,0 +1,8 @@
+.git
+**/node_modules
+app/build
+app/.dart_tool
+app/.flutter-plugins*
+.env
+.env.*
+docs

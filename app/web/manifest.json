@@ -1,12 +1,12 @@
 {
-    "name": "mru_app",
-    "short_name": "mru_app",
+    "name": "MRU · Equipo 4 · ITS Saltillo",
+    "short_name": "MRU Reto",
+    "lang": "es",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
-    "orientation": "portrait-primary",
+    "background_color": "#0E1116",
+    "theme_color": "#0E1116",
+    "description": "Práctica de Física: Movimiento Rectilíneo Uniforme. Simulación y reto.",
     "prefer_related_applications": false,
     "icons": [
         {

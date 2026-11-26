@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../services/leaderboard.dart';
+
 import '../theme.dart';
 import 'reto_screen.dart';
 import 'simulacion_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({super.key, this.service});
+
+  final LeaderboardService? service;
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +41,9 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const Expanded(
+              Expanded(
                 child: TabBarView(
-                  children: [SimulacionScreen(), RetoScreen()],
+                  children: [const SimulacionScreen(), RetoScreen(service: service)],
                 ),
               ),
             ],

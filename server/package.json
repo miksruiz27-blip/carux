@@ -3,6 +3,22 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=20" },
-  "scripts": {}
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "node --test",
+    "qr": "node qr.js"
+  },
+  "dependencies": {
+    "compression": "^1.8.2",
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.5",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "qrcode": "^1.5.4",
+    "supertest": "^7.3.2"
+  }
 }

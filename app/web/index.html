@@ -1,46 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
+  <!-- Lo reemplaza `flutter build --base-href`. -->
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <!-- Igual al que pone el motor de Flutter (flt-viewport evita su aviso); así el
+       celular ya tiene el ancho correcto mientras carga. -->
+  <meta name="viewport" flt-viewport content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="Práctica de Física: Movimiento Rectilíneo Uniforme. Simulación y reto de tiempo de reacción. Equipo 4 · ITS Saltillo.">
+  <meta name="theme-color" content="#0E1116">
+  <meta name="color-scheme" content="dark">
 
-  <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="mru_app">
+  <meta name="apple-mobile-web-app-title" content="MRU Reto">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="favicon.png">
 
-  <title>mru_app</title>
+  <title>MRU · Equipo 4 · ITS Saltillo</title>
   <link rel="manifest" href="manifest.json">
+
+  <style>
+    html, body { margin: 0; height: 100%; background: #0E1116; }
+    #carga {
+      position: fixed; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 18px;
+      font: 15px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      color: #8B949E; transition: opacity .3s;
+    }
+    #carga .pista { position: relative; width: 180px; height: 4px; border-radius: 2px; background: #2A313C; overflow: hidden; }
+    #carga .pista::after {
+      content: ""; position: absolute; top: 0; left: -40px; width: 40px; height: 100%;
+      background: #B6FF3B; animation: avanza 1.2s linear infinite; /* velocidad constante: MRU */
+    }
+    @keyframes avanza { to { left: 180px; } }
+    @media (prefers-reduced-motion: reduce) { #carga .pista::after { animation: none; left: 0; width: 100%; opacity: .5; } }
+  </style>
 </head>
 <body>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
-
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
+  <div id="carga" role="status" aria-live="polite">
+    <div class="pista"></div>
+    <div>Cargando la práctica…</div>
+  </div>
+  <noscript><p style="color:#E6EDF3;text-align:center;font-family:sans-serif">Activa JavaScript para usar la app.</p></noscript>
+  <script>
+    // El motor de Flutter avisa cuando pintó el primer cuadro.
+    window.addEventListener('flutter-first-frame', function () {
+      var el = document.getElementById('carga');
+      if (!el) return;
+      el.style.opacity = '0';
+      setTimeout(function () { el.remove(); }, 300);
+    });
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

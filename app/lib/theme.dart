@@ -23,6 +23,9 @@ ThemeData buildTheme() {
   );
   return base.copyWith(
     scaffoldBackgroundColor: kBg,
+    // Áreas táctiles de 48×48 también en escritorio (por defecto ahí se encogen).
+    materialTapTargetSize: MaterialTapTargetSize.padded,
+    visualDensity: VisualDensity.standard, // en escritorio Flutter usa compact (−8 px)
     colorScheme: const ColorScheme.dark(
       primary: kAccent,
       onPrimary: kBg,
@@ -43,6 +46,12 @@ ThemeData buildTheme() {
     ),
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(minimumSize: const Size(48, 48)),
+    ),
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(minimumSize: const Size(48, 48)),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
