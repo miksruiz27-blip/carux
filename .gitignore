@@ -1,0 +1,21 @@
+# Flutter / Dart
+app/.dart_tool/
+app/build/
+app/.flutter-plugins
+app/.flutter-plugins-dependencies
+app/.packages
+*.iml
+.idea/
+.vscode/
+
+# Node
+server/node_modules/
+npm-debug.log*
+
+# Entorno
+.env
+.env.*
+
+# SO
+.DS_Store
+Thumbs.db
